@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import Users from "./components/Users";
+
+import api from "./services/api";
+
+interface IUsers {
+  name: string;
+  email: string;
+}
 
 function App() {
+  const [users, setUsers] = useState<IUsers[]>([]);
+
+  useEffect(() => {
+    api.get<IUsers[]>("/users").then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {users.map((user) => (<Users key={user.email} user={user}/>))}
     </div>
   );
 }
