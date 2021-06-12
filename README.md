@@ -21,6 +21,8 @@ $ npm start ou yarn start
 -  [ReactJS](https://reactjs.org/)
 -  [Typescript](https://www.typescriptlang.org/docs/)
 
+## ⚛️ Back-end
+-  [BackEnd](https://github.com/Pedrooliver13/typescript-back)
 
 ---
 
